@@ -36,6 +36,15 @@ end
 item --> customer
 person --> customer
 transaction --> customer
-
-
 ```
+
+## 实现
+
+实现过程：`domain --> infrastructure --> application --> interface`
+
+### domain
+实现顺序：`实体 --> 值对象 --> 聚合`
+
+
+### infrastructure
+在`domain`中定义 `repository` 接口，然后在`infrastructure`中实现这些接口
