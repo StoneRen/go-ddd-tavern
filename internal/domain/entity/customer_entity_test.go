@@ -16,7 +16,7 @@ func TestCustomer_NewCustomer(t *testing.T) {
 			expectedErr: ErrInvalidPerson,
 		}, {
 			test:        "Valid Name",
-			name:        "Percy Bolmer",
+			name:        "StoneRen",
 			expectedErr: nil,
 		},
 	}

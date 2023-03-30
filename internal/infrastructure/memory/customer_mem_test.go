@@ -14,7 +14,7 @@ func TestMemory_GetCustomer(t *testing.T) {
 		expectedErr error
 	}
 
-	customer, err := entity.NewCustomer("Percy")
+	customer, err := entity.NewCustomer("StoneRen")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -59,7 +59,7 @@ func TestMemory_AddCustomer(t *testing.T) {
 	testCases := []testCase{
 		{
 			name:        "Add Customer",
-			cust:        "Percy",
+			cust:        "StoneRen",
 			expectedErr: nil,
 		},
 	}
