@@ -9,11 +9,10 @@
 
 `实体`：具有唯一标识的对象，可变的
 
-`值对象`：没有唯一标识的对象，不可变。比如一单交易执行，它就不能改变状态了
+`值对象`：没有唯一标识的对象，不可变。比如一单交易执行了，它就不能改变状态了
 
-`聚合`：由一组相关的实体和值对象组成的集合，它们之间是有关联的，它们之间的关联是有规律的，它们之间的关联是有方向的。
+`聚合`：实体和值对象的组合集，存储在存储库
 
-`聚合根`：聚合的入口，它是聚合的唯一标识，它是聚合
 
 ## 设计
 
@@ -21,7 +20,7 @@
 flowchart LR
 
 subgraph 实体
-item[商品]
+item[物品]
 person[人]
 end
 
@@ -31,11 +30,23 @@ end
 
 subgraph 聚合
 customer[顾客]
+product[商品]
 end
 
-item --> customer
+subgraph 应用
+order[订单]
+tavern[小酒馆]
+end
+
+item --> product
 person --> customer
 transaction --> customer
+
+product --> order
+customer --> order
+
+order --> tavern
+
 ```
 
 ## 实现
@@ -48,3 +59,10 @@ transaction --> customer
 
 ### infrastructure
 在`domain`中定义 `repository` 接口，然后在`infrastructure`中实现这些接口
+
+
+## 总结
+能够把基本流程走一遍，但依然有这几个问题：
+1. insfrastructure中的实现,现在还是比较单一的，理论上能抽象下
+2. 这个结构还是需要优化的，还是比较别扭的
+3. trasaction也没有被使用到

@@ -86,6 +86,7 @@ func (app *OrderApp) CreateOrderSumPrice(customerId uuid.UUID, productIds []uuid
 		price += p.GetPrice()
 	}
 	log.Printf("Customer: %s has ordered %d products ,All price : %f", customer.GetId(), len(products), price)
+	// 疑问：这段代码并没有把客户和商品列表关联起来啊？
 
 	return price, nil
 }
